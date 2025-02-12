@@ -3,10 +3,15 @@
 
 // Pegando os dados da requisição
 $data = file_get_contents("php://input");
-$logFile = "log.txt";
+$logFile = "/tmp/log.txt";
 
 // Salvando os dados recebidos (para testes)
-file_put_contents($logFile, $data . PHP_EOL, FILE_APPEND);
+if (is_writable("/tmp/")) {
+    file_put_contents($logFile, $data . PHP_EOL, FILE_APPEND);
+} else {
+    error_log("O diretório /tmp/ não é gravável!");
+    die();
+}
 
 // Resposta para o servidor do WhatsApp
 header("Content-Type: application/json");
