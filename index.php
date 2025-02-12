@@ -16,3 +16,5 @@ if (is_writable("/tmp/")) {
 // Resposta para o servidor do WhatsApp
 header("Content-Type: application/json");
 echo json_encode(["status" => "success"]);
+
+echo "<a href='./log.php'>acessar log<a/>";
