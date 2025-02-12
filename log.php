@@ -1,5 +1,5 @@
 <?php
-$logFile = "/temp/webhook_log.json";
+$logFile = "/tmp/webhook_log.json";
 
 if (file_exists($logFile)) {
     // Lê o conteúdo do arquivo

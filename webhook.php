@@ -7,7 +7,7 @@
 $json = file_get_contents("php://input");
 
 // Define um caminho para salvar o log (certifique-se que o diretório "temp" existe e tem permissão)
-$logFile = "/temp/webhook_log.json";
+$logFile = "/tmp/webhook_log.json";
 
 // Salva o JSON recebido no arquivo
 file_put_contents($logFile, $json . PHP_EOL, FILE_APPEND);
