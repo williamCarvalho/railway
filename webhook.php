@@ -10,7 +10,7 @@ $json = file_get_contents("php://input");
 $logFile = "/tmp/webhook_log.json";
 
 // Salva o JSON recebido no arquivo
-file_put_contents($logFile, $json . PHP_EOL, FILE_APPEND);
+file_put_contents($logFile, $json . PHP_EOL);
 
 // echo $_REQUEST['hub_challenge'];
 exit;
