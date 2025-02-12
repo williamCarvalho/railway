@@ -9,8 +9,20 @@ $json = file_get_contents("php://input");
 // Define um caminho para salvar o log (certifique-se que o diretório "temp" existe e tem permissão)
 $logFile = "/tmp/webhook_log.json";
 
-// Salva o JSON recebido no arquivo
-file_put_contents($logFile, $json . PHP_EOL);
+if (file_exists($logFile)) {
+    $jasonFile = file_get_contents($logFile);
+    $data1 = json_decode($jasonFile, true);
+    $data2 = json_decode($json, true);
+
+    $mergedData = array_merge($data1, $data2);
+
+    $mergedJson = json_encode($mergedData, JSON_PRETTY_PRINT);
+
+    file_put_contents($logFile, $mergedJson . PHP_EOL);
+} else {
+    // Salva o JSON recebido no arquivo
+    file_put_contents($logFile, $json . PHP_EOL);
+}
 
 // echo $_REQUEST['hub_challenge'];
 exit;
