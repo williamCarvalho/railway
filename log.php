@@ -1,8 +1,17 @@
 <?php
+$logFile = "temp/webhook_log.json";
 
-header("Content-Type: application/json");
-if (file_exists("/tmp/log.txt")) {
-    echo nl2br(file_get_contents("/tmp/log.txt"));
+if (file_exists($logFile)) {
+    // Lê o conteúdo do arquivo
+    $json = file_get_contents($logFile);
+
+    // Decodifica o JSON para um array PHP
+    $data = json_decode($json, true);
+
+    // Exibe formatado (para debug)
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
 } else {
-    echo "O arquivo de log não existe.";
+    echo "Arquivo de log não encontrado!";
 }
